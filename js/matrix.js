@@ -10,20 +10,27 @@ function setCanvasSize() {
 setCanvasSize();
 window.addEventListener('resize', setCanvasSize);
 
-// Matrix characters
-const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()';
+// Matrix characters (more varied)
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?~あいうえおかきくけこ';
 const charArray = chars.split('');
-const fontSize = 14;
+const fontSize = 16;
 const columns = canvas.width / fontSize;
 const drops = [];
 
 // Initialize drops
 for (let i = 0; i < columns; i++) {
-    drops[i] = Math.floor(Math.random() * canvas.height / fontSize);
+    drops[i] = Math.floor(Math.random() * -100); // Start above screen for staggered effect
 }
 
-// Red matrix colors
-const colors = ['#ff0000', '#cc0000', '#990000', '#660000'];
+// Red matrix colors with more variation
+const colors = [
+    '#ff0000', // bright red
+    '#ee0000', // red hat red
+    '#cc0000', // darker red
+    '#990000', // deep red
+    '#ff3333', // light red
+    '#ff6666'  // pale red
+];
 
 function draw() {
     // Semi-transparent black background for trail effect
@@ -37,11 +44,21 @@ function draw() {
     for (let i = 0; i < drops.length; i++) {
         // Random character
         const char = charArray[Math.floor(Math.random() * charArray.length)];
-        // Random red shade
-        ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
         
-        // Draw the character
-        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+        // Gradient effect for vertical streams
+        const streamLength = 20;
+        for (let j = 0; j < streamLength; j++) {
+            const y = (drops[i] - j) * fontSize;
+            if (y < canvas.height && y > 0) {
+                // Fade out effect
+                const alpha = (1 - j / streamLength);
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                ctx.fillStyle = color + Math.floor(alpha * 255).toString(16).padStart(2, '0');
+                
+                // Draw the character
+                ctx.fillText(char, i * fontSize, y);
+            }
+        }
 
         // Reset drop when it reaches bottom
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
@@ -50,6 +67,17 @@ function draw() {
 
         // Move drop
         drops[i]++;
+    }
+
+    // Add random glitch effect
+    if (Math.random() > 0.99) {
+        ctx.fillStyle = colors[0] + '44';
+        ctx.fillRect(
+            Math.random() * canvas.width,
+            Math.random() * canvas.height,
+            Math.random() * 100 + 100,
+            2
+        );
     }
 }
 
