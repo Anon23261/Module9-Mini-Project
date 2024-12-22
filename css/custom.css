@@ -239,6 +239,22 @@ footer a:hover {
     }
 }
 
+/* Black text links */
+.black-text-link {
+    color: #000000 !important;
+    font-weight: bold !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.black-text-link:hover {
+    color: #333333 !important;
+    text-decoration: underline !important;
+    transform: scale(1.05);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .carousel-item img {
