@@ -12,6 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
+    <style>
+        .solid-black {
+            color: black;
+        }
+    </style>
 </head>
 <body class="terminal-text">
     <!-- Navigation -->
@@ -104,35 +109,57 @@
         </div>
     </div>
 
-    <!-- Features Section -->
-    <div class="container py-5">
-        <h2 class="text-center mb-5 glitch" data-text="TACTICAL ADVANTAGES">TACTICAL ADVANTAGES</h2>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <i class="fas fa-shield-alt fa-3x mb-3"></i>
-                        <h5 class="card-title">Secure Operations</h5>
-                        <p class="card-text">Military-grade encryption and security protocols for all mission data.</p>
-                    </div>
+    <!-- Tactical Advantages Section -->
+    <div class="row mt-5">
+        <h2 class="text-center mb-4 glitch" data-text="TACTICAL ADVANTAGES">TACTICAL ADVANTAGES</h2>
+        
+        <!-- Authentication -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-fingerprint fa-3x mb-3"></i>
+                    <h3>
+                        <a href="javascript:void(0);" onclick="handleAuth();" class="solid-black">
+                            Advanced Authentication
+                        </a>
+                    </h3>
+                    <p>
+                        Multi-layer authentication system with biometric verification and secure token generation.
+                    </p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <i class="fas fa-radar fa-3x mb-3"></i>
-                        <h5 class="card-title">Real-time Monitoring</h5>
-                        <p class="card-text">Advanced tracking and monitoring of all active operations.</p>
-                    </div>
+        </div>
+        
+        <!-- Task Management -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-tasks fa-3x mb-3"></i>
+                    <h3>
+                        <a href="javascript:void(0);" onclick="handleTasks();" class="solid-black">
+                            Dynamic Task Control
+                        </a>
+                    </h3>
+                    <p>
+                        Real-time task management with priority-based scheduling and automated status updates.
+                    </p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <i class="fas fa-terminal fa-3x mb-3"></i>
-                        <h5 class="card-title">Command Line Interface</h5>
-                        <p class="card-text">Direct access to system controls through secure terminal.</p>
-                    </div>
+        </div>
+        
+        <!-- Security -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-shield-alt fa-3x mb-3"></i>
+                    <h3>
+                        <a href="javascript:void(0);" onclick="handleSecurity();" class="solid-black">
+                            Maximum Security
+                        </a>
+                    </h3>
+                    <p>
+                        End-to-end encryption with advanced threat detection and real-time monitoring.
+                    </p>
                 </div>
             </div>
         </div>
@@ -203,5 +230,18 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function handleAuth() {
+            alert('Accessing Advanced Authentication System...');
+        }
+        
+        function handleTasks() {
+            alert('Opening Dynamic Task Control Center...');
+        }
+        
+        function handleSecurity() {
+            alert('Initializing Maximum Security Protocols...');
+        }
+    </script>
 </body>
 </html>
