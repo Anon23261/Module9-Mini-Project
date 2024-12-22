@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red Hat Task Force - Command & Control</title>
+    <title>Red Hat Task Force - Command Center</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -12,17 +12,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
-    <style>
-        .solid-black {
-            color: black;
-        }
-    </style>
 </head>
-<body class="terminal-text">
+<body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand glitch" href="index.html" data-text="RED HAT TASK FORCE">
+            <a class="navbar-brand" href="index.html">
                 <i class="fas fa-shield-alt"></i> RED HAT TASK FORCE
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -31,19 +26,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html"><i class="fas fa-home"></i> Base</a>
+                        <a class="nav-link" href="pages/dashboard.html">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/dashboard.html"><i class="fas fa-radar"></i> Command Center</a>
+                        <a class="nav-link" href="pages/task-create.html">Create Task</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/task-create.html"><i class="fas fa-plus-circle"></i> Deploy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/login.html"><i class="fas fa-key"></i> Access</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/register.html"><i class="fas fa-user-shield"></i> Enlist</a>
+                        <a class="nav-link" href="#features">Features</a>
                     </li>
                 </ul>
             </div>
@@ -51,157 +40,110 @@
     </nav>
 
     <!-- Hero Section -->
-    <div class="py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="display-4 glitch" data-text="SECURE COMMAND CENTER">SECURE COMMAND CENTER</h1>
-                    <p class="lead terminal-text">Execute missions with military-grade security and precision.</p>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <a href="pages/register.html" class="btn btn-primary btn-lg px-4 me-md-2">
-                            <i class="fas fa-shield-alt"></i> Initialize Access
-                        </a>
-                        <a href="pages/login.html" class="btn btn-outline-danger btn-lg px-4">
-                            <i class="fas fa-terminal"></i> Command Line
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <!-- Carousel Component -->
-                    <div id="operationsCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#operationsCarousel" data-bs-slide-to="0" class="active"></button>
-                            <button type="button" data-bs-target="#operationsCarousel" data-bs-slide-to="1"></button>
-                            <button type="button" data-bs-target="#operationsCarousel" data-bs-slide-to="2"></button>
-                        </div>
-                        <div class="carousel-inner rounded">
-                            <div class="carousel-item active">
-                                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Cyber Security">
-                                <div class="carousel-caption">
-                                    <h5><i class="fas fa-lock"></i> Maximum Security Protocol</h5>
-                                    <p>Military-grade encryption for all operations</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Command Center">
-                                <div class="carousel-caption">
-                                    <h5><i class="fas fa-radar"></i> Mission Control</h5>
-                                    <p>Real-time operation monitoring and control</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Network Security">
-                                <div class="carousel-caption">
-                                    <h5><i class="fas fa-shield-alt"></i> Tactical Deployment</h5>
-                                    <p>Swift and secure mission execution</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#operationsCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#operationsCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tactical Advantages Section -->
-    <div class="row mt-5">
-        <h2 class="text-center mb-4 glitch" data-text="TACTICAL ADVANTAGES">TACTICAL ADVANTAGES</h2>
-        
-        <!-- Authentication -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body text-center">
-                    <i class="fas fa-fingerprint fa-3x mb-3"></i>
-                    <h3>
-                        <a href="javascript:void(0);" onclick="handleAuth();" class="solid-black">
-                            Advanced Authentication
-                        </a>
-                    </h3>
-                    <p>
-                        Multi-layer authentication system with biometric verification and secure token generation.
-                    </p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Task Management -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body text-center">
-                    <i class="fas fa-tasks fa-3x mb-3"></i>
-                    <h3>
-                        <a href="javascript:void(0);" onclick="handleTasks();" class="solid-black">
-                            Dynamic Task Control
-                        </a>
-                    </h3>
-                    <p>
-                        Real-time task management with priority-based scheduling and automated status updates.
-                    </p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Security -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body text-center">
-                    <i class="fas fa-shield-alt fa-3x mb-3"></i>
-                    <h3>
-                        <a href="javascript:void(0);" onclick="handleSecurity();" class="solid-black">
-                            Maximum Security
-                        </a>
-                    </h3>
-                    <p>
-                        End-to-end encryption with advanced threat detection and real-time monitoring.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Security Protocols Section with Accordion -->
     <div class="container py-5">
-        <h2 class="text-center mb-5 glitch" data-text="SECURITY PROTOCOLS">SECURITY PROTOCOLS</h2>
-        <div class="accordion" id="securityAccordion">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#protocol1">
-                        <i class="fas fa-shield-alt me-2"></i> Access Control Matrix
-                    </button>
-                </h2>
-                <div id="protocol1" class="accordion-collapse collapse show" data-bs-parent="#securityAccordion">
-                    <div class="accordion-body">
-                        Multi-layer authentication system with biometric verification and secure token generation.
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 mb-4">Welcome to Command Center</h1>
+                <p class="lead readable-text">Experience next-generation task management with advanced monitoring capabilities.</p>
+                <div class="mt-4">
+                    <a href="pages/dashboard.html" class="btn btn-primary btn-lg me-3">
+                        <i class="fas fa-rocket"></i> Launch Dashboard
+                    </a>
+                    <a href="pages/task-create.html" class="btn btn-outline-danger btn-lg">
+                        <i class="fas fa-plus"></i> New Task
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="assets/images/command-center.jpg" alt="Command Center" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container py-5" id="features">
+        <h2 class="section-title">Tactical Advantages</h2>
+        <div class="row g-4">
+            <!-- Real-time Monitoring -->
+            <div class="col-md-4">
+                <div class="card h-100 hover-effect">
+                    <div class="card-body text-center">
+                        <i class="fas fa-satellite fa-3x"></i>
+                        <h3 class="card-title readable-text">Real-time Monitoring</h3>
+                        <p class="card-text">Track operations in real-time with advanced visualization and instant updates.</p>
+                        <a href="pages/dashboard.html" class="btn btn-primary mt-3">
+                            <i class="fas fa-eye"></i> View Dashboard
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#protocol2">
-                        <i class="fas fa-lock me-2"></i> Encryption Protocols
-                    </button>
-                </h2>
-                <div id="protocol2" class="accordion-collapse collapse" data-bs-parent="#securityAccordion">
-                    <div class="accordion-body">
-                        End-to-end encryption using military-grade algorithms for all data transmission.
+
+            <!-- Task Management -->
+            <div class="col-md-4">
+                <div class="card h-100 hover-effect">
+                    <div class="card-body text-center">
+                        <i class="fas fa-tasks fa-3x"></i>
+                        <h3 class="card-title readable-text">Task Management</h3>
+                        <p class="card-text">Efficiently organize and track tasks with priority-based scheduling.</p>
+                        <a href="pages/task-create.html" class="btn btn-primary mt-3">
+                            <i class="fas fa-plus"></i> Create Task
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#protocol3">
-                        <i class="fas fa-user-shield me-2"></i> Intrusion Detection
-                    </button>
-                </h2>
-                <div id="protocol3" class="accordion-collapse collapse" data-bs-parent="#securityAccordion">
-                    <div class="accordion-body">
-                        Advanced intrusion detection system with real-time threat monitoring and response.
+
+            <!-- Analytics -->
+            <div class="col-md-4">
+                <div class="card h-100 hover-effect">
+                    <div class="card-body text-center">
+                        <i class="fas fa-chart-line fa-3x"></i>
+                        <h3 class="card-title readable-text">Analytics</h3>
+                        <p class="card-text">Comprehensive analytics and reporting for data-driven decision making.</p>
+                        <a href="pages/dashboard.html#analytics" class="btn btn-primary mt-3">
+                            <i class="fas fa-chart-bar"></i> View Analytics
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="container py-5">
+        <div class="row text-center g-4">
+            <div class="col-md-3">
+                <div class="card hover-effect">
+                    <div class="card-body">
+                        <i class="fas fa-check-circle fa-3x"></i>
+                        <h4 class="card-title mt-3">Active Tasks</h4>
+                        <p class="display-4 text-highlight">24</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card hover-effect">
+                    <div class="card-body">
+                        <i class="fas fa-clock fa-3x"></i>
+                        <h4 class="card-title mt-3">In Progress</h4>
+                        <p class="display-4 text-highlight">12</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card hover-effect">
+                    <div class="card-body">
+                        <i class="fas fa-flag-checkered fa-3x"></i>
+                        <h4 class="card-title mt-3">Completed</h4>
+                        <p class="display-4 text-highlight">156</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card hover-effect">
+                    <div class="card-body">
+                        <i class="fas fa-users fa-3x"></i>
+                        <h4 class="card-title mt-3">Team Members</h4>
+                        <p class="display-4 text-highlight">18</p>
                     </div>
                 </div>
             </div>
@@ -209,20 +151,24 @@
     </div>
 
     <!-- Footer -->
-    <footer class="py-4 mt-5">
+    <footer class="py-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h5 class="terminal-text">RED HAT TASK FORCE</h5>
-                    <p>Secure. Monitor. Control.</p>
+                    <h5 class="mb-3">Red Hat Task Force</h5>
+                    <p class="readable-text">Advanced task management and monitoring system</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <h5 class="terminal-text">Quick Access</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="pages/dashboard.html"><i class="fas fa-radar"></i> Command Center</a></li>
-                        <li><a href="pages/task-create.html"><i class="fas fa-plus-circle"></i> Deploy Operation</a></li>
-                        <li><a href="pages/register.html"><i class="fas fa-user-shield"></i> Security Clearance</a></li>
-                    </ul>
+                    <div class="social-links">
+                        <a href="#" class="me-3"><i class="fab fa-github"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <p class="mb-0 readable-text"> 2024 Red Hat Task Force. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -230,18 +176,5 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function handleAuth() {
-            alert('Accessing Advanced Authentication System...');
-        }
-        
-        function handleTasks() {
-            alert('Opening Dynamic Task Control Center...');
-        }
-        
-        function handleSecurity() {
-            alert('Initializing Maximum Security Protocols...');
-        }
-    </script>
 </body>
 </html>
