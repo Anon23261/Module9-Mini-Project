@@ -9,22 +9,76 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/custom.css">
     <style>
-        .solid-black {
-            color: #000;
-            text-decoration: none;
+        canvas#matrixCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        body {
+            background-color: black;
+            color: white;
+        }
+        .card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--rh-red);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .list-group-item {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--rh-red);
+            color: white;
+            margin-bottom: 0.5rem;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        .list-group-item:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: translateY(-2px);
+        }
+        .form-check-label {
+            color: white;
+        }
+        .card-title, .card-text {
+            color: white;
+        }
+        .text-muted {
+            color: #aaa !important;
+        }
+        .display-6 {
+            color: var(--rh-red);
+            font-weight: bold;
+        }
+        .progress {
+            background: rgba(255, 255, 255, 0.1);
+            height: 8px;
+            margin-top: 5px;
+        }
+        .stat-icon {
+            color: var(--rh-red);
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
-<body class="terminal-text">
+<body>
+    <canvas id="matrixCanvas"></canvas>
+    
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand glitch" href="../index.html" data-text="RED HAT TASK FORCE">
-                <i class="fas fa-shield-alt"></i> RED HAT TASK FORCE
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-hat-cowboy"></i> RED HAT TASK FORCE
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -32,19 +86,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html"><i class="fas fa-home"></i> Base</a>
+                        <a class="nav-link" href="../index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="dashboard.html"><i class="fas fa-radar"></i> Command Center</a>
+                        <a class="nav-link active" href="dashboard.html">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="task-create.html"><i class="fas fa-plus-circle"></i> Deploy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html"><i class="fas fa-key"></i> Access</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="register.html"><i class="fas fa-user-shield"></i> Enlist</a>
+                        <a class="nav-link" href="teams.html">Teams</a>
                     </li>
                 </ul>
             </div>
@@ -52,21 +100,19 @@
     </nav>
 
     <!-- Dashboard Header -->
-    <div class="container-fluid py-4">
+    <div class="container py-4">
         <div class="row align-items-center">
             <div class="col-md-6">
-                <h1 class="glitch" data-text="COMMAND CENTER">
-                    <a href="javascript:void(0);" onclick="handleMonitoring();" class="solid-black">
-                        <i class="fas fa-satellite"></i> Real-time Monitoring
-                    </a>
+                <h1 class="text-white">
+                    <i class="fas fa-satellite"></i> Command Center
                 </h1>
-                <p class="lead terminal-text">Mission Control and Operation Management</p>
+                <p class="lead text-white">Real-time Mission Control and Operation Management</p>
             </div>
             <div class="col-md-6 text-md-end">
-                <button class="btn btn-primary me-2">
+                <button class="btn btn-primary me-2" onclick="addRandomTask()">
                     <i class="fas fa-plus-circle"></i> New Operation
                 </button>
-                <button class="btn btn-outline-danger">
+                <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#filterSection">
                     <i class="fas fa-filter"></i> Filter Tasks
                 </button>
             </div>
@@ -74,13 +120,35 @@
     </div>
 
     <!-- Main Dashboard Content -->
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <!-- Sidebar -->
             <div class="col-md-3 mb-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title"><i class="fas fa-filter"></i> Operation Filters</h5>
+                        <h5 class="card-title"><i class="fas fa-chart-line"></i> Operation Status</h5>
+                        <div class="mt-4">
+                            <p class="mb-1">Active Operations</p>
+                            <div class="progress">
+                                <div id="activeProgress" class="progress-bar bg-success" role="progressbar"></div>
+                            </div>
+                            
+                            <p class="mb-1 mt-3">Pending Operations</p>
+                            <div class="progress">
+                                <div id="pendingProgress" class="progress-bar bg-warning" role="progressbar"></div>
+                            </div>
+                            
+                            <p class="mb-1 mt-3">Completed Operations</p>
+                            <div class="progress">
+                                <div id="completedProgress" class="progress-bar bg-secondary" role="progressbar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="filterSection" class="card mt-4 collapse">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-filter"></i> Filters</h5>
                         <div class="mb-3">
                             <label class="form-label">Priority Level</label>
                             <div class="form-check">
@@ -134,36 +202,36 @@
                     <div class="col-md-3">
                         <div class="card text-center h-100">
                             <div class="card-body">
-                                <i class="fas fa-tasks fa-2x mb-2"></i>
+                                <i class="fas fa-tasks stat-icon"></i>
                                 <h5 class="card-title">Total Operations</h5>
-                                <p class="card-text display-6">12</p>
+                                <p id="totalOps" class="card-text display-6">0</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="card text-center h-100">
                             <div class="card-body">
-                                <i class="fas fa-running fa-2x mb-2"></i>
+                                <i class="fas fa-running stat-icon"></i>
                                 <h5 class="card-title">Active</h5>
-                                <p class="card-text display-6">5</p>
+                                <p id="activeOps" class="card-text display-6">0</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="card text-center h-100">
                             <div class="card-body">
-                                <i class="fas fa-clock fa-2x mb-2"></i>
+                                <i class="fas fa-clock stat-icon"></i>
                                 <h5 class="card-title">Pending</h5>
-                                <p class="card-text display-6">3</p>
+                                <p id="pendingOps" class="card-text display-6">0</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="card text-center h-100">
                             <div class="card-body">
-                                <i class="fas fa-check-circle fa-2x mb-2"></i>
+                                <i class="fas fa-check-circle stat-icon"></i>
                                 <h5 class="card-title">Completed</h5>
-                                <p class="card-text display-6">4</p>
+                                <p id="completedOps" class="card-text display-6">0</p>
                             </div>
                         </div>
                     </div>
@@ -172,58 +240,21 @@
                 <!-- Task List -->
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title mb-4">Active Operations</h5>
-                        <div class="list-group">
-                            <!-- Task 1 -->
-                            <div class="list-group-item list-group-item-action">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h6 class="mb-1">
-                                        <span class="badge bg-danger me-2">Critical</span>
-                                        Security Audit Implementation
-                                    </h6>
-                                    <small class="text-muted">Due in 2 days</small>
-                                </div>
-                                <p class="mb-1">Implement comprehensive security audit protocols across all systems.</p>
-                                <small>
-                                    <span class="badge bg-success">Active</span>
-                                    <span class="badge bg-secondary">Security</span>
-                                    <span class="badge bg-info">Phase 1</span>
-                                </small>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-list"></i> Active Operations
+                            </h5>
+                            <div class="btn-group">
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-sort-amount-down"></i> Sort
+                                </button>
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-sync-alt"></i> Refresh
+                                </button>
                             </div>
-
-                            <!-- Task 2 -->
-                            <div class="list-group-item list-group-item-action">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h6 class="mb-1">
-                                        <span class="badge bg-warning me-2">High</span>
-                                        Firewall Configuration Update
-                                    </h6>
-                                    <small class="text-muted">Due in 4 days</small>
-                                </div>
-                                <p class="mb-1">Update and optimize firewall rules for enhanced security.</p>
-                                <small>
-                                    <span class="badge bg-success">Active</span>
-                                    <span class="badge bg-secondary">Network</span>
-                                    <span class="badge bg-info">Maintenance</span>
-                                </small>
-                            </div>
-
-                            <!-- Task 3 -->
-                            <div class="list-group-item list-group-item-action">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h6 class="mb-1">
-                                        <span class="badge bg-info me-2">Medium</span>
-                                        Access Control Review
-                                    </h6>
-                                    <small class="text-muted">Due in 1 week</small>
-                                </div>
-                                <p class="mb-1">Review and update access control matrices for all systems.</p>
-                                <small>
-                                    <span class="badge bg-warning">Pending</span>
-                                    <span class="badge bg-secondary">Admin</span>
-                                    <span class="badge bg-info">Review</span>
-                                </small>
-                            </div>
+                        </div>
+                        <div id="taskList" class="list-group">
+                            <!-- Tasks will be dynamically inserted here -->
                         </div>
                     </div>
                 </div>
@@ -232,20 +263,25 @@
     </div>
 
     <!-- Footer -->
-    <footer class="py-4 mt-5">
+    <footer class="footer mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h5 class="terminal-text">RED HAT TASK FORCE</h5>
-                    <p>Secure. Monitor. Control.</p>
+                    <h5>Red Hat Task Force</h5>
+                    <p>Advanced task management and monitoring system</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <h5 class="terminal-text">Quick Access</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="task-create.html"><i class="fas fa-plus-circle"></i> Deploy Operation</a></li>
-                        <li><a href="login.html"><i class="fas fa-key"></i> Access Control</a></li>
-                        <li><a href="register.html"><i class="fas fa-user-shield"></i> Security Clearance</a></li>
-                    </ul>
+                    <div class="social-links">
+                        <a href="#" class="me-3"><i class="fab fa-github"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0"> 2024 Red Hat Task Force. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -253,34 +289,64 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom JavaScript -->
+    
+    <!-- Matrix Background -->
     <script>
-        // Terminal typing effect
-        function typeWriter(element, text, i = 0) {
-            if (i === 0) {
-                element.textContent = '';
-            }
-            if (i < text.length) {
-                element.textContent += text.charAt(i);
-                setTimeout(() => typeWriter(element, text, i + 1), 100);
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function setCanvasSize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        setCanvasSize();
+        window.addEventListener('resize', setCanvasSize);
+
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?~';
+        const charArray = chars.split('');
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.floor(Math.random() * -100);
+        }
+
+        const colors = [
+            '#ff0000',
+            '#ee0000',
+            '#cc0000',
+            '#990000',
+            '#ff3333',
+            '#ff6666'
+        ];
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < drops.length; i++) {
+                const char = charArray[Math.floor(Math.random() * charArray.length)];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                ctx.fillStyle = color;
+                ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+                
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                drops[i]++;
             }
         }
 
-        // Apply typing effect to headings
-        document.addEventListener('DOMContentLoaded', function() {
-            const headings = document.querySelectorAll('.glitch');
-            headings.forEach(heading => {
-                const text = heading.textContent;
-                typeWriter(heading, text);
-            });
-        });
+        setInterval(draw, 35);
     </script>
-    <script>
-        function handleMonitoring() {
-            alert('Accessing Real-time Monitoring System...');
-            // Add your monitoring logic here
-        }
-    </script>
+
+    <!-- Dashboard JS -->
+    <script src="../js/dashboard.js"></script>
 </body>
 </html>
