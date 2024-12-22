@@ -239,6 +239,33 @@ footer a:hover {
     }
 }
 
+/* Override for black text links */
+.solid-black {
+    color: #000000 !important;
+    font-weight: 900 !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+    background: none !important;
+    -webkit-text-fill-color: #000000 !important;
+    text-decoration: none !important;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 2px;
+}
+
+.solid-black:hover {
+    color: #000000 !important;
+    text-decoration: none !important;
+    border-bottom: 3px solid #000000;
+}
+
+.solid-black:active {
+    color: #000000 !important;
+}
+
+.solid-black i {
+    color: #000000 !important;
+}
+
 /* Black text links */
 .black-text-link {
     color: #000000 !important;

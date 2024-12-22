@@ -52,7 +52,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h2 class="text-center mb-4 glitch" data-text="DEPLOY OPERATION">
-                            <a href="task-create.html" class="black-text-link" onclick="window.location.href='task-create.html';">
+                            <a href="javascript:void(0);" onclick="handleCLI();" class="solid-black">
                                 <i class="fas fa-terminal"></i> Command Line Interface
                             </a>
                         </h2>
@@ -237,6 +237,11 @@
                 this.setCustomValidity('');
             }
         });
+
+        function handleCLI() {
+            alert('Opening Command Line Interface...');
+            // Add your CLI logic here
+        }
     </script>
 </body>
 </html>
