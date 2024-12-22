@@ -1,0 +1,25 @@
+# Security
+.env
+*.pem
+*.key
+*.cert
+*.crt
+*.password
+*.secret
+.ssh/
+.credentials/
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
