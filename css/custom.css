@@ -451,3 +451,87 @@ footer a {
 footer a:hover {
     color: var(--rh-red);
 }
+
+/* Matrix Canvas */
+#matrixCanvas {
+    opacity: 0.1;
+}
+
+/* Content overlay */
+.container {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    backdrop-filter: blur(5px);
+}
+
+/* Team Cards */
+.team-card {
+    background: var(--rh-white);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(238, 0, 0, 0.1);
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(238, 0, 0, 0.2);
+}
+
+.team-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.team-card-header h3 {
+    margin: 0;
+    color: var(--rh-red);
+}
+
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.member-avatar {
+    width: 32px;
+    height: 32px;
+    background: var(--rh-red);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.team-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* Modal Styling */
+.modal-content {
+    background: var(--rh-white);
+    border: 1px solid var(--rh-red);
+}
+
+.modal-header {
+    border-bottom: 2px solid var(--rh-red);
+}
+
+.modal-footer {
+    border-top: 2px solid var(--rh-red);
+}
