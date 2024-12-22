@@ -1,7 +1,7 @@
 /* Base styles */
 body {
-    background-color: #1a1a1a;
-    color: #e0e0e0;
+    background-color: #ffffff;
+    color: #000000;
     font-family: 'Share Tech Mono', monospace;
     line-height: 1.6;
 }
@@ -31,29 +31,35 @@ body {
 
 /* Cards */
 .card {
-    background-color: #2a2a2a;
-    border: 1px solid #ff0000;
+    background-color: #ffffff;
+    border: 1px solid #000000;
     transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .card-body {
-    color: #ffffff;
+    color: #000000;
 }
 
 /* Text styles */
 h1, h2, h3, h4, h5, h6 {
-    color: #ffffff;
+    color: #000000;
     font-weight: bold;
     margin-bottom: 1rem;
 }
 
-.text-highlight {
-    color: #ff0000;
+p, .card-text {
+    color: #000000 !important;
+}
+
+.lead {
+    color: #000000 !important;
+    font-weight: 500;
 }
 
 /* Links */
@@ -61,10 +67,12 @@ a {
     color: #ff0000;
     text-decoration: none;
     transition: color 0.3s ease;
+    cursor: pointer;
 }
 
 a:hover {
-    color: #ff3333;
+    color: #cc0000;
+    text-decoration: underline;
 }
 
 /* Buttons */
@@ -73,21 +81,25 @@ a:hover {
     border-color: #ff0000;
     color: #ffffff;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .btn-primary:hover {
     background-color: #cc0000;
     border-color: #cc0000;
+    transform: translateY(-2px);
 }
 
 .btn-outline-danger {
     color: #ff0000;
     border-color: #ff0000;
+    cursor: pointer;
 }
 
 .btn-outline-danger:hover {
     background-color: #ff0000;
     color: #ffffff;
+    transform: translateY(-2px);
 }
 
 /* Icons */
@@ -98,31 +110,75 @@ a:hover {
 
 /* Custom text colors */
 .readable-text {
-    color: #ffffff !important;
+    color: #000000 !important;
     font-size: 1.1rem;
-    text-shadow: none;
-    opacity: 1;
+    font-weight: 500;
 }
 
 .card-title {
-    color: #ffffff !important;
+    color: #000000 !important;
     font-size: 1.3rem;
     font-weight: bold;
     margin-bottom: 1rem;
 }
 
-.card-text {
-    color: #e0e0e0 !important;
-    font-size: 1rem;
-    line-height: 1.5;
+.section-title {
+    color: #000000;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-title:after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: #ff0000;
+    margin: 1rem auto;
 }
 
 /* Footer */
 footer {
     background-color: #000000;
     border-top: 2px solid #ff0000;
-    color: #ffffff;
     padding: 2rem 0;
+}
+
+footer p {
+    color: #ffffff !important;
+}
+
+footer a {
+    color: #ffffff;
+}
+
+footer a:hover {
+    color: #ff0000;
+}
+
+/* Hover effects */
+.hover-effect {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.hover-effect:hover {
+    transform: scale(1.05);
+}
+
+/* Stats */
+.display-4 {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+/* Make sure links are clickable */
+a, button, .btn {
+    cursor: pointer !important;
 }
 
 /* Responsive design */
@@ -158,79 +214,6 @@ footer {
 
 .card {
     animation: fadeIn 0.5s ease-out forwards;
-}
-
-/* Hover effects */
-.hover-effect {
-    transition: all 0.3s ease;
-}
-
-.hover-effect:hover {
-    transform: scale(1.05);
-}
-
-/* Section titles */
-.section-title {
-    color: #ffffff;
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 3rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    position: relative;
-}
-
-.section-title:after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 3px;
-    background: #ff0000;
-    margin: 1rem auto;
-}
-
-/* Override for black text links */
-.solid-black {
-    color: #000000 !important;
-    font-weight: 900 !important;
-    text-shadow: none !important;
-    opacity: 1 !important;
-    background: none !important;
-    -webkit-text-fill-color: #000000 !important;
-    text-decoration: none !important;
-    border-bottom: 2px solid #000000;
-    padding-bottom: 2px;
-}
-
-.solid-black:hover {
-    color: #000000 !important;
-    text-decoration: none !important;
-    border-bottom: 3px solid #000000;
-}
-
-.solid-black:active {
-    color: #000000 !important;
-}
-
-.solid-black i {
-    color: #000000 !important;
-}
-
-/* Black text links */
-.black-text-link {
-    color: #000000 !important;
-    font-weight: bold !important;
-    opacity: 1 !important;
-    text-shadow: none !important;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.black-text-link:hover {
-    color: #333333 !important;
-    text-decoration: underline !important;
-    transform: scale(1.05);
 }
 
 /* Terminal effect text */
@@ -287,4 +270,47 @@ footer {
     100% {
         clip: rect(79px, 550px, 94px, 0);
     }
+}
+
+/* Override for black text links */
+.solid-black {
+    color: #000000 !important;
+    font-weight: 900 !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+    background: none !important;
+    -webkit-text-fill-color: #000000 !important;
+    text-decoration: none !important;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 2px;
+}
+
+.solid-black:hover {
+    color: #000000 !important;
+    text-decoration: none !important;
+    border-bottom: 3px solid #000000;
+}
+
+.solid-black:active {
+    color: #000000 !important;
+}
+
+.solid-black i {
+    color: #000000 !important;
+}
+
+/* Black text links */
+.black-text-link {
+    color: #000000 !important;
+    font-weight: bold !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.black-text-link:hover {
+    color: #333333 !important;
+    text-decoration: underline !important;
+    transform: scale(1.05);
 }
