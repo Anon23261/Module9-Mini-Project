@@ -9,16 +9,16 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <i class="fas fa-shield-alt"></i> RED HAT TASK FORCE
+                <i class="fas fa-hat-cowboy"></i> RED HAT TASK FORCE
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -26,13 +26,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="pages/dashboard.html">Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="pages/task-create.html">Create Task</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#features">Features</a>
                     </li>
                 </ul>
             </div>
@@ -40,123 +40,121 @@
     </nav>
 
     <!-- Hero Section -->
-    <div class="container py-5">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <h1 class="display-4 mb-4">Welcome to Command Center</h1>
-                <p class="lead readable-text">Experience next-generation task management with advanced monitoring capabilities.</p>
-                <div class="mt-4">
-                    <a href="pages/dashboard.html" class="btn btn-primary btn-lg me-3">
-                        <i class="fas fa-rocket"></i> Launch Dashboard
-                    </a>
-                    <a href="pages/task-create.html" class="btn btn-outline-danger btn-lg">
-                        <i class="fas fa-plus"></i> New Task
-                    </a>
+    <div class="hero-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title mb-4">Command & Control Center</h1>
+                    <p class="hero-text mb-4">Advanced task management system with real-time monitoring capabilities.</p>
+                    <div class="d-flex gap-3">
+                        <a href="pages/dashboard.html" class="btn btn-primary btn-lg">
+                            <i class="fas fa-rocket me-2"></i>Launch Dashboard
+                        </a>
+                        <a href="pages/task-create.html" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-plus me-2"></i>New Task
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <img src="assets/images/command-center.jpg" alt="Command Center" class="img-fluid rounded shadow">
+                <div class="col-lg-6 text-center">
+                    <div class="hero-image">
+                        <i class="fas fa-hat-cowboy-side display-1 text-primary mb-4"></i>
+                        <h2 class="text-primary">Red Hat Task Force</h2>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Features Section -->
-    <div class="container py-5" id="features">
-        <h2 class="section-title">Tactical Advantages</h2>
-        <div class="row g-4">
-            <!-- Real-time Monitoring -->
-            <div class="col-md-4">
-                <div class="card h-100 hover-effect">
-                    <div class="card-body text-center">
-                        <i class="fas fa-satellite fa-3x"></i>
-                        <h3 class="card-title readable-text">Real-time Monitoring</h3>
-                        <p class="card-text">Track operations in real-time with advanced visualization and instant updates.</p>
-                        <a href="pages/dashboard.html" class="btn btn-primary mt-3">
-                            <i class="fas fa-eye"></i> View Dashboard
-                        </a>
+    <section id="features" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Key Features</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-wrapper mb-4">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3>Task Management</h3>
+                        <p>Create, assign, and track tasks with our intuitive interface.</p>
+                        <a href="pages/task-create.html" class="btn btn-link">Learn More</a>
                     </div>
                 </div>
-            </div>
-
-            <!-- Task Management -->
-            <div class="col-md-4">
-                <div class="card h-100 hover-effect">
-                    <div class="card-body text-center">
-                        <i class="fas fa-tasks fa-3x"></i>
-                        <h3 class="card-title readable-text">Task Management</h3>
-                        <p class="card-text">Efficiently organize and track tasks with priority-based scheduling.</p>
-                        <a href="pages/task-create.html" class="btn btn-primary mt-3">
-                            <i class="fas fa-plus"></i> Create Task
-                        </a>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-wrapper mb-4">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Real-time Monitoring</h3>
+                        <p>Monitor task progress and team performance in real-time.</p>
+                        <a href="pages/dashboard.html" class="btn btn-link">View Dashboard</a>
                     </div>
                 </div>
-            </div>
-
-            <!-- Analytics -->
-            <div class="col-md-4">
-                <div class="card h-100 hover-effect">
-                    <div class="card-body text-center">
-                        <i class="fas fa-chart-line fa-3x"></i>
-                        <h3 class="card-title readable-text">Analytics</h3>
-                        <p class="card-text">Comprehensive analytics and reporting for data-driven decision making.</p>
-                        <a href="pages/dashboard.html#analytics" class="btn btn-primary mt-3">
-                            <i class="fas fa-chart-bar"></i> View Analytics
-                        </a>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-wrapper mb-4">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Team Collaboration</h3>
+                        <p>Work together efficiently with team-based task management.</p>
+                        <a href="#" class="btn btn-link">Explore Teams</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Quick Stats -->
-    <div class="container py-5">
-        <div class="row text-center g-4">
-            <div class="col-md-3">
-                <div class="card hover-effect">
-                    <div class="card-body">
-                        <i class="fas fa-check-circle fa-3x"></i>
-                        <h4 class="card-title mt-3">Active Tasks</h4>
-                        <p class="display-4 text-highlight">24</p>
+    <!-- Stats Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4>Active Tasks</h4>
+                        <p class="stat-number">24</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card hover-effect">
-                    <div class="card-body">
-                        <i class="fas fa-clock fa-3x"></i>
-                        <h4 class="card-title mt-3">In Progress</h4>
-                        <p class="display-4 text-highlight">12</p>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>In Progress</h4>
+                        <p class="stat-number">12</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card hover-effect">
-                    <div class="card-body">
-                        <i class="fas fa-flag-checkered fa-3x"></i>
-                        <h4 class="card-title mt-3">Completed</h4>
-                        <p class="display-4 text-highlight">156</p>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-flag-checkered"></i>
+                        </div>
+                        <h4>Completed</h4>
+                        <p class="stat-number">156</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card hover-effect">
-                    <div class="card-body">
-                        <i class="fas fa-users fa-3x"></i>
-                        <h4 class="card-title mt-3">Team Members</h4>
-                        <p class="display-4 text-highlight">18</p>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Team Members</h4>
+                        <p class="stat-number">18</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="py-4">
+    <footer class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h5 class="mb-3">Red Hat Task Force</h5>
-                    <p class="readable-text">Advanced task management and monitoring system</p>
+                    <h5>Red Hat Task Force</h5>
+                    <p>Advanced task management and monitoring system</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <div class="social-links">
@@ -166,9 +164,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-3">
+            <hr class="my-4">
+            <div class="row">
                 <div class="col-12 text-center">
-                    <p class="mb-0 readable-text"> 2024 Red Hat Task Force. All rights reserved.</p>
+                    <p class="mb-0"> 2024 Red Hat Task Force. All rights reserved.</p>
                 </div>
             </div>
         </div>
