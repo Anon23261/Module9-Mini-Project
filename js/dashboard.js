@@ -1,9 +1,5 @@
 // Dashboard Data
 let dashboardData = {
-    totalOperations: 12,
-    activeOperations: 5,
-    pendingOperations: 3,
-    completedOperations: 4,
     tasks: [
         {
             id: 1,
@@ -26,49 +22,56 @@ let dashboardData = {
     ]
 };
 
-// Real-time monitoring simulation
-function simulateRealTimeUpdates() {
-    // Randomly update statistics
-    setInterval(() => {
-        const randomChange = Math.floor(Math.random() * 3) - 1; // -1, 0, or 1
-        dashboardData.activeOperations = Math.max(0, dashboardData.activeOperations + randomChange);
-        updateStatistics();
-    }, 5000);
+// Calculate statistics based on actual tasks
+function calculateStatistics() {
+    const stats = {
+        total: dashboardData.tasks.length,
+        active: 0,
+        pending: 0,
+        completed: 0
+    };
 
-    // Simulate new tasks being added
-    setInterval(() => {
-        if (Math.random() > 0.7) {
-            addRandomTask();
+    dashboardData.tasks.forEach(task => {
+        switch(task.status) {
+            case 'active':
+                stats.active++;
+                break;
+            case 'pending':
+                stats.pending++;
+                break;
+            case 'completed':
+                stats.completed++;
+                break;
         }
-    }, 10000);
+    });
 
-    // Update task statuses
-    setInterval(() => {
-        updateRandomTaskStatus();
-    }, 7000);
+    return stats;
 }
 
 // Update statistics display
 function updateStatistics() {
-    document.getElementById('totalOps').textContent = dashboardData.totalOperations;
-    document.getElementById('activeOps').textContent = dashboardData.activeOperations;
-    document.getElementById('pendingOps').textContent = dashboardData.pendingOperations;
-    document.getElementById('completedOps').textContent = dashboardData.completedOperations;
+    const stats = calculateStatistics();
+    
+    // Update counters
+    document.getElementById('totalOps').textContent = stats.total;
+    document.getElementById('activeOps').textContent = stats.active;
+    document.getElementById('pendingOps').textContent = stats.pending;
+    document.getElementById('completedOps').textContent = stats.completed;
 
     // Update progress bars
-    updateProgressBars();
-}
+    if (stats.total > 0) {
+        const activePercent = (stats.active / stats.total) * 100;
+        const pendingPercent = (stats.pending / stats.total) * 100;
+        const completedPercent = (stats.completed / stats.total) * 100;
 
-// Update progress bars
-function updateProgressBars() {
-    const total = dashboardData.totalOperations;
-    const active = (dashboardData.activeOperations / total) * 100;
-    const pending = (dashboardData.pendingOperations / total) * 100;
-    const completed = (dashboardData.completedOperations / total) * 100;
-
-    document.getElementById('activeProgress').style.width = active + '%';
-    document.getElementById('pendingProgress').style.width = pending + '%';
-    document.getElementById('completedProgress').style.width = completed + '%';
+        document.getElementById('activeProgress').style.width = activePercent + '%';
+        document.getElementById('pendingProgress').style.width = pendingPercent + '%';
+        document.getElementById('completedProgress').style.width = completedPercent + '%';
+    } else {
+        document.getElementById('activeProgress').style.width = '0%';
+        document.getElementById('pendingProgress').style.width = '0%';
+        document.getElementById('completedProgress').style.width = '0%';
+    }
 }
 
 // Add a random task
@@ -94,10 +97,6 @@ function addRandomTask() {
     };
 
     dashboardData.tasks.push(newTask);
-    dashboardData.totalOperations++;
-    if (newTask.status === "active") dashboardData.activeOperations++;
-    if (newTask.status === "pending") dashboardData.pendingOperations++;
-
     updateTaskList();
     updateStatistics();
 }
@@ -108,20 +107,10 @@ function updateRandomTaskStatus() {
 
     const taskIndex = Math.floor(Math.random() * dashboardData.tasks.length);
     const task = dashboardData.tasks[taskIndex];
-    const oldStatus = task.status;
     const statuses = ["active", "pending", "completed"];
     const newStatus = statuses[Math.floor(Math.random() * statuses.length)];
 
-    if (oldStatus !== newStatus) {
-        // Update counters
-        if (oldStatus === "active") dashboardData.activeOperations--;
-        if (oldStatus === "pending") dashboardData.pendingOperations--;
-        if (oldStatus === "completed") dashboardData.completedOperations--;
-
-        if (newStatus === "active") dashboardData.activeOperations++;
-        if (newStatus === "pending") dashboardData.pendingOperations++;
-        if (newStatus === "completed") dashboardData.completedOperations++;
-
+    if (task.status !== newStatus) {
         task.status = newStatus;
         updateTaskList();
         updateStatistics();
@@ -177,8 +166,55 @@ function updateTaskList() {
     });
 }
 
-// Initialize monitoring
+// Real-time monitoring simulation
+function simulateRealTimeUpdates() {
+    // Update task statuses periodically
+    setInterval(() => {
+        if (Math.random() > 0.7) { // 30% chance to update a task status
+            updateRandomTaskStatus();
+        }
+    }, 5000);
+}
+
+// Filter tasks
+function filterTasks() {
+    const priorityFilters = {
+        critical: document.getElementById('criticalPriority').checked,
+        high: document.getElementById('highPriority').checked,
+        medium: document.getElementById('mediumPriority').checked
+    };
+
+    const statusFilters = {
+        active: document.getElementById('activeStatus').checked,
+        pending: document.getElementById('pendingStatus').checked,
+        completed: document.getElementById('completedStatus').checked
+    };
+
+    const hasActiveFilters = Object.values(priorityFilters).some(v => v) || 
+                           Object.values(statusFilters).some(v => v);
+
+    const filteredTasks = dashboardData.tasks.filter(task => {
+        if (!hasActiveFilters) return true;
+        
+        const priorityMatch = !Object.values(priorityFilters).some(v => v) || 
+                            priorityFilters[task.priority];
+        const statusMatch = !Object.values(statusFilters).some(v => v) || 
+                          statusFilters[task.status];
+        
+        return priorityMatch && statusMatch;
+    });
+
+    updateTaskListWithFiltered(filteredTasks);
+}
+
+// Add event listeners for filter checkboxes
 document.addEventListener('DOMContentLoaded', () => {
+    const filterCheckboxes = document.querySelectorAll('.form-check-input');
+    filterCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', filterTasks);
+    });
+
+    // Initialize the dashboard
     updateStatistics();
     updateTaskList();
     simulateRealTimeUpdates();
