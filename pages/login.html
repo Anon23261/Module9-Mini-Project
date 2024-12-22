@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Control - Red Hat Task Force</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body class="terminal-text">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand glitch" href="../index.html" data-text="RED HAT TASK FORCE">
+                <i class="fas fa-shield-alt"></i> RED HAT TASK FORCE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html"><i class="fas fa-home"></i> Base</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html"><i class="fas fa-radar"></i> Command Center</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="task-create.html"><i class="fas fa-plus-circle"></i> Deploy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="login.html"><i class="fas fa-key"></i> Access</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html"><i class="fas fa-user-shield"></i> Enlist</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Form Section -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="text-center mb-4 glitch" data-text="ACCESS CONTROL">ACCESS CONTROL</h2>
+                        <form id="loginForm" class="needs-validation" novalidate>
+                            <div class="mb-4">
+                                <label for="username" class="form-label">
+                                    <i class="fas fa-user-secret"></i> Operative ID
+                                </label>
+                                <input type="text" class="form-control" id="username" required 
+                                       pattern="[a-zA-Z0-9]{4,}"
+                                       placeholder="Enter your operative ID">
+                                <div class="invalid-feedback">
+                                    Operative ID must be at least 4 characters long.
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="password" class="form-label">
+                                    <i class="fas fa-key"></i> Access Code
+                                </label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="password" required
+                                           pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                                           placeholder="Enter your access code">
+                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Access code must be at least 8 characters with letters and numbers.
+                                </div>
+                            </div>
+                            <div class="mb-4 form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">
+                                    Maintain secure connection
+                                </label>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-terminal"></i> Initialize Access
+                                </button>
+                            </div>
+                        </form>
+                        <div class="text-center mt-4">
+                            <p>Need security clearance? <a href="register.html">Request Access</a></p>
+                            <p><a href="#" class="text-danger">Reset Access Codes</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="terminal-text">RED HAT TASK FORCE</h5>
+                    <p>Secure. Monitor. Control.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5 class="terminal-text">Quick Access</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="dashboard.html"><i class="fas fa-radar"></i> Command Center</a></li>
+                        <li><a href="task-create.html"><i class="fas fa-plus-circle"></i> Deploy Operation</a></li>
+                        <li><a href="register.html"><i class="fas fa-user-shield"></i> Security Clearance</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Form validation
+        (function () {
+            'use strict'
+            const forms = document.querySelectorAll('.needs-validation')
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+
+        // Password visibility toggle
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const password = document.getElementById('password');
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.querySelector('i').classList.toggle('fa-eye');
+            this.querySelector('i').classList.toggle('fa-eye-slash');
+        });
+
+        // Terminal typing effect for headings
+        function typeWriter(element, text, i = 0) {
+            if (i === 0) {
+                element.textContent = '';
+            }
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                setTimeout(() => typeWriter(element, text, i + 1), 100);
+            }
+        }
+
+        // Apply typing effect to headings
+        document.addEventListener('DOMContentLoaded', function() {
+            const headings = document.querySelectorAll('.glitch');
+            headings.forEach(heading => {
+                const text = heading.textContent;
+                typeWriter(heading, text);
+            });
+        });
+    </script>
+</body>
+</html>

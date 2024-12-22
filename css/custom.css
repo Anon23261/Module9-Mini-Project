@@ -1,0 +1,255 @@
+/* Red Hat Task Force - Tactical CSS */
+
+:root {
+    --primary-color: #ff0000;
+    --secondary-color: #1a1a1a;
+    --accent-color: #00ff00;
+    --dark-bg: #0a0a0a;
+    --terminal-green: #00ff00;
+    --danger-red: #ff0000;
+    --cyber-blue: #00ffff;
+}
+
+/* General styles */
+body {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: var(--dark-bg);
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+/* Navbar enhancements */
+.navbar {
+    background-color: var(--secondary-color) !important;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.navbar-brand {
+    color: var(--primary-color) !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.navbar-brand i {
+    margin-right: 8px;
+    color: var(--terminal-green);
+}
+
+.nav-link {
+    color: #ffffff !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+    transform: translateX(0);
+}
+
+/* Hero section */
+.display-4 {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.bg-light {
+    background-color: var(--secondary-color) !important;
+}
+
+/* Card styling */
+.card {
+    background-color: rgba(26, 26, 26, 0.9);
+    border: 1px solid var(--primary-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+.card i {
+    color: var(--terminal-green);
+    transition: all 0.3s ease;
+}
+
+.card:hover i {
+    transform: scale(1.1);
+    color: var(--primary-color);
+}
+
+/* Carousel customization */
+.carousel-item img {
+    object-fit: cover;
+    height: 400px;
+    filter: grayscale(50%) brightness(70%);
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+
+.btn-primary:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Accordion styling */
+.accordion-button {
+    background-color: var(--secondary-color) !important;
+    color: #ffffff !important;
+    border-left: 4px solid var(--primary-color);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--secondary-color) !important;
+    color: var(--terminal-green) !important;
+}
+
+.accordion-body {
+    background-color: var(--dark-bg);
+    color: #ffffff;
+}
+
+/* Footer styling */
+footer {
+    background-color: var(--secondary-color) !important;
+    border-top: 2px solid var(--primary-color);
+}
+
+footer a {
+    color: var(--terminal-green) !important;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Terminal effect text */
+.terminal-text {
+    color: var(--terminal-green);
+    font-family: 'Share Tech Mono', monospace;
+}
+
+/* Glitch effect */
+.glitch {
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--cyber-blue);
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--danger-red);
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip: rect(24px, 550px, 90px, 0);
+    }
+    20% {
+        clip: rect(85px, 550px, 140px, 0);
+    }
+    40% {
+        clip: rect(66px, 550px, 114px, 0);
+    }
+    60% {
+        clip: rect(92px, 550px, 135px, 0);
+    }
+    80% {
+        clip: rect(58px, 550px, 122px, 0);
+    }
+    100% {
+        clip: rect(79px, 550px, 94px, 0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 300px;
+    }
+    
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .card {
+        margin-bottom: 20px;
+    }
+}

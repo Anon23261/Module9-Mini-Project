@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Center - Red Hat Task Force</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body class="terminal-text">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand glitch" href="../index.html" data-text="RED HAT TASK FORCE">
+                <i class="fas fa-shield-alt"></i> RED HAT TASK FORCE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html"><i class="fas fa-home"></i> Base</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="dashboard.html"><i class="fas fa-radar"></i> Command Center</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="task-create.html"><i class="fas fa-plus-circle"></i> Deploy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html"><i class="fas fa-key"></i> Access</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html"><i class="fas fa-user-shield"></i> Enlist</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <div class="container-fluid py-4">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 class="glitch" data-text="COMMAND CENTER">COMMAND CENTER</h1>
+                <p class="lead terminal-text">Mission Control and Operation Management</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <button class="btn btn-primary me-2">
+                    <i class="fas fa-plus-circle"></i> New Operation
+                </button>
+                <button class="btn btn-outline-danger">
+                    <i class="fas fa-filter"></i> Filter Tasks
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-filter"></i> Operation Filters</h5>
+                        <div class="mb-3">
+                            <label class="form-label">Priority Level</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="criticalPriority">
+                                <label class="form-check-label" for="criticalPriority">
+                                    <span class="badge bg-danger">Critical</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="highPriority">
+                                <label class="form-check-label" for="highPriority">
+                                    <span class="badge bg-warning">High</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="mediumPriority">
+                                <label class="form-check-label" for="mediumPriority">
+                                    <span class="badge bg-info">Medium</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Status</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="activeStatus">
+                                <label class="form-check-label" for="activeStatus">
+                                    <span class="badge bg-success">Active</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="pendingStatus">
+                                <label class="form-check-label" for="pendingStatus">
+                                    <span class="badge bg-warning">Pending</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="completedStatus">
+                                <label class="form-check-label" for="completedStatus">
+                                    <span class="badge bg-secondary">Completed</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9">
+                <!-- Statistics Cards -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card text-center h-100">
+                            <div class="card-body">
+                                <i class="fas fa-tasks fa-2x mb-2"></i>
+                                <h5 class="card-title">Total Operations</h5>
+                                <p class="card-text display-6">12</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center h-100">
+                            <div class="card-body">
+                                <i class="fas fa-running fa-2x mb-2"></i>
+                                <h5 class="card-title">Active</h5>
+                                <p class="card-text display-6">5</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center h-100">
+                            <div class="card-body">
+                                <i class="fas fa-clock fa-2x mb-2"></i>
+                                <h5 class="card-title">Pending</h5>
+                                <p class="card-text display-6">3</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center h-100">
+                            <div class="card-body">
+                                <i class="fas fa-check-circle fa-2x mb-2"></i>
+                                <h5 class="card-title">Completed</h5>
+                                <p class="card-text display-6">4</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task List -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Active Operations</h5>
+                        <div class="list-group">
+                            <!-- Task 1 -->
+                            <div class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">
+                                        <span class="badge bg-danger me-2">Critical</span>
+                                        Security Audit Implementation
+                                    </h6>
+                                    <small class="text-muted">Due in 2 days</small>
+                                </div>
+                                <p class="mb-1">Implement comprehensive security audit protocols across all systems.</p>
+                                <small>
+                                    <span class="badge bg-success">Active</span>
+                                    <span class="badge bg-secondary">Security</span>
+                                    <span class="badge bg-info">Phase 1</span>
+                                </small>
+                            </div>
+
+                            <!-- Task 2 -->
+                            <div class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">
+                                        <span class="badge bg-warning me-2">High</span>
+                                        Firewall Configuration Update
+                                    </h6>
+                                    <small class="text-muted">Due in 4 days</small>
+                                </div>
+                                <p class="mb-1">Update and optimize firewall rules for enhanced security.</p>
+                                <small>
+                                    <span class="badge bg-success">Active</span>
+                                    <span class="badge bg-secondary">Network</span>
+                                    <span class="badge bg-info">Maintenance</span>
+                                </small>
+                            </div>
+
+                            <!-- Task 3 -->
+                            <div class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">
+                                        <span class="badge bg-info me-2">Medium</span>
+                                        Access Control Review
+                                    </h6>
+                                    <small class="text-muted">Due in 1 week</small>
+                                </div>
+                                <p class="mb-1">Review and update access control matrices for all systems.</p>
+                                <small>
+                                    <span class="badge bg-warning">Pending</span>
+                                    <span class="badge bg-secondary">Admin</span>
+                                    <span class="badge bg-info">Review</span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="terminal-text">RED HAT TASK FORCE</h5>
+                    <p>Secure. Monitor. Control.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5 class="terminal-text">Quick Access</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="task-create.html"><i class="fas fa-plus-circle"></i> Deploy Operation</a></li>
+                        <li><a href="login.html"><i class="fas fa-key"></i> Access Control</a></li>
+                        <li><a href="register.html"><i class="fas fa-user-shield"></i> Security Clearance</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Terminal typing effect
+        function typeWriter(element, text, i = 0) {
+            if (i === 0) {
+                element.textContent = '';
+            }
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                setTimeout(() => typeWriter(element, text, i + 1), 100);
+            }
+        }
+
+        // Apply typing effect to headings
+        document.addEventListener('DOMContentLoaded', function() {
+            const headings = document.querySelectorAll('.glitch');
+            headings.forEach(heading => {
+                const text = heading.textContent;
+                typeWriter(heading, text);
+            });
+        });
+    </script>
+</body>
+</html>
